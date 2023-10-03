@@ -1,11 +1,33 @@
-use cosmwasm_std::{entry_point, DepsMut, Empty, Env, MessageInfo, Response, StdResult};
+pub mod contract;
+pub mod msg;
+pub mod state;
 
-#[entry_point]
+use cosmwasm_std::{
+    entry_point, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult,
+};
+use msg::InstantiateMsg;
+
+#[cfg_attr(not(feature = "library"), entry_point)]
 pub fn instantiate(
-    _deps: DepsMut,
-    _env: Env,
-    _info: MessageInfo,
-    _msg: Empty,
+    deps: DepsMut,
+    env: Env,
+    info: MessageInfo,
+    msg: InstantiateMsg,
 ) -> StdResult<Response> {
-    Ok(Response::new())
+    contract::instantiate(deps, env, info, msg)
+}
+
+#[cfg_attr(not(feature = "library"), entry_point)]
+pub fn query(deps: Deps, env: Env, msg: msg::QueryMsg) -> StdResult<Binary> {
+    contract::query(deps, env, msg)
+}
+
+#[cfg_attr(not(feature = "library"), entry_point)]
+pub fn execute(
+    deps: DepsMut,
+    env: Env,
+    info: MessageInfo,
+    msg: msg::ExecuteMsg,
+) -> StdResult<Response> {
+    contract::execute(deps, env, info, msg)
 }
