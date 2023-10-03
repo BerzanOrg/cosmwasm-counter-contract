@@ -2,9 +2,7 @@ pub mod contract;
 pub mod msg;
 pub mod state;
 
-use cosmwasm_std::{
-    entry_point, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult,
-};
+use cosmwasm_std::{entry_point, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
 use msg::InstantiateMsg;
 
 #[cfg_attr(not(feature = "library"), entry_point)]
