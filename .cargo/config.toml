@@ -1,0 +1,4 @@
+[alias]
+wasm-release = "build --lib --target wasm32-unknown-unknown --release"
+wasm-debug = "build --lib --target wasm32-unknown-unknown"
+schema = "run schema"
