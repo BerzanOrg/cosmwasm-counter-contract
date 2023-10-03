@@ -1,0 +1,10 @@
+[package]
+name = "cosmwasm-counter-contract"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+cosmwasm-std = { version = "1.4.0", features = ["staking"] }
